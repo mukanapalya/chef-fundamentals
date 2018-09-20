@@ -1,3 +1,4 @@
+# for packages vim and tree
 package 'vim' do
   action :install
 end
