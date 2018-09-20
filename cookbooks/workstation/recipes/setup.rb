@@ -22,5 +22,7 @@ puts "I have #{apple_count} apples"
 
 template '/etc/motd' do
   source 'motd.erb'
+  variables(
+    :name => 'DRYiCE')
   action :create
 end
