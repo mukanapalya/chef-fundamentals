@@ -27,6 +27,15 @@ bash "inline script" do
   end
 end
 
+execute 'run a script' do
+  user "root"
+  command <<-EOH
+  mkdir -p /var/www/mysites/ /
+  chown -R apache /var/www/mysites/
+  EOH
+  not_if
+end
+
 directory '/var/www/mysites' do
   owner 'apache'
   recursive true
