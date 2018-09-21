@@ -27,6 +27,11 @@ bash "inline script" do
   end
 end
 
+directory '/var/www/mysites' do
+  owner 'apache'
+  recursive true
+end
+
 
 service 'httpd' do
   action [:enable,:start ]
