@@ -19,6 +19,15 @@ end
 #  ) 
 #end
 
+bash "inline script" do
+  user "root"
+  code "mkdir -p /var/www/mysites/ && chown -R apache /var/www/mysites/"
+  not_if do
+    File.directory?('/var/www/mysites/')
+  end
+end
+
+
 service 'httpd' do
   action [:enable,:start ]
 end
