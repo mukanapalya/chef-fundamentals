@@ -8,16 +8,17 @@ package 'httpd' do
   action :install
 end
 
-cookbook_file '/var/www/html/index.html' do
-  source 'index.html'
-end
-
-#template '/var/www/html/index.html' do
-#  source 'index.html.erb'
-#  variables(
-#  :name => 'DRYiCE'
-#  ) 
+#cookbook_file '/var/www/html/index.html' do
+#  source 'index.html'
 #end
+
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+  notifies :restart, 'service[httpd]', :immediately
+  variables(
+  :name => 'DRYiCE'
+  ) 
+end
 
 bash "inline script" do
   user "root"
